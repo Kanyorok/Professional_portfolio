@@ -74,6 +74,19 @@
     border: none;
     background-color: white;
   }
+
+  #menu-page {
+    display: none;
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  .top-x {
+    display: none;
+    justify-content: end;
+    padding-right: 2em;
+    margin-top: 1.5em;
+  }
 }
 
 @media (min-width: 769px) {
@@ -157,21 +170,9 @@
   }
 }
 
-.menu-page {
-  display: block;
-  flex-direction: column;
-}
-
 .x-icon {
   font-size: 1.8em;
   color: #505f79;
-}
-
-.top-x {
-  display: flex;
-  justify-content: end;
-  padding-right: 2em;
-  margin-top: 1.5em;
 }
 
 .menu-title {
