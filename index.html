@@ -35,9 +35,15 @@
         <li>Contact</li>
       </ul>
       <section id="menu-page">
-        <h1 class="menu-title">Portfolio</h1>
-        <h1 class="menu-title">About</h1>
-        <h1 class="menu-title">Contact</h1>
+        <a href="#portfolio_section" onclick="mobileMenu()">
+          <h1 class="menu-title">Portfolio</h1>
+        </a>
+        <a href="#about_section" onclick="mobileMenu()">
+          <h1 class="menu-title">About</h1>
+        </a>
+        <a href="#contact_section" onclick="mobileMenu()">
+          <h1 class="menu-title">Contact</h1>
+        </a>
       </section>
       <section>
         <div class="cover-image">
@@ -74,7 +80,8 @@
       </section>
     </div>
 
-    <section>
+    <section id="portfolio_section">
+      <div id="popWindow"></div>
       <h1 class="projects-title">My Recent Works</h1>
       <div class="card-section">
         <div class="card">
@@ -118,7 +125,7 @@
         </div>
       </div>
     </section>
-    <section>
+    <section id="about_section">
       <div class="about-section">
         <h2>About me</h2>
         <img
@@ -176,7 +183,7 @@
         </div>
       </div>
     </section>
-    <section>
+    <section id="contact_section">
       <div class="contact-section">
         <div class="form-container">
           <h3>

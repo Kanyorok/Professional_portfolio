@@ -81,6 +81,11 @@
     height: 100vh;
   }
 
+  #menu-page a {
+    text-decoration: none;
+    color: #000;
+  }
+
   .top-x {
     display: none;
     justify-content: end;
