@@ -1,3 +1,57 @@
+//Completed projects Onjects
+const projectInfo = [
+    {
+      id: 1,
+      projectName: 'Todo App to Manage your Tasks',
+      projectInfo:
+        'A daily tracking of privately personalized activities; no accounts or sign-ups required.',
+      tech: ['HTML', 'CSS', 'Javascript'],
+      img: 'projects/center_back.png',
+    },
+    {
+      id: 2,
+      projectName: 'Data Dashboard Healthcare',
+      projectInfo:
+        "A daily selection of privately personalized reads; no accounts or sign-ups required. Has been the industry's standard.",
+      tech: ['HTML', 'Bootstrap', 'Ruby'],
+      img: 'projects/center_back.png',
+    },
+    {
+      id: 3,
+      projectName: 'Website Portfolio',
+      projectInfo:
+        "A daily selection of privately personalized reads; no accounts or sign-ups required. Has been the industry's standard.",
+      tech: ['HTML', 'Bootstrap', 'Ruby'],
+      img: 'projects/center_back.png',
+    },
+    {
+      id: 4,
+      projectName: 'Profesional Art Printing Data',
+      projectInfo:
+        "A daily selection of privately personalized reads; no accounts or sign-ups required. Has been the industry's standard.",
+      tech: ['HTML', 'Bootstrap', 'Ruby'],
+      img: 'projects/center_back.png',
+    },
+    {
+      id: 5,
+      projectName: 'Data Dashboard Healthcare',
+      projectInfo:
+        "A daily selection of privately personalized reads; no accounts or sign-ups required. Has been the industry's standard.",
+      tech: ['HTML', 'Bootstrap', 'Ruby'],
+      img: 'projects/center_back.png',
+    },
+    {
+      id: 6,
+      projectName: 'Website Portfolio',
+      projectInfo:
+        "A daily selection of privately personalized reads; no accounts or sign-ups required. Has been the industry's standard.",
+      tech: ['HTML', 'Bootstrap', 'Ruby'],
+      img: 'projects/center_back.png',
+    },
+  ];
+
+
+// DOM manipulation functions
 function mobileMenu() {
     const hamburger = document.querySelector('.menu-bar');
     const mobileMenu = document.getElementById('menu-page');
@@ -22,10 +76,19 @@ function showPopup() {
     mainPopupDiv.appendChild(secondaryPopupDiv);
     const imageDiv = document.createElement('div');
     imageDiv.setAttribute('id','popup_img');
+    const close_icon = document.createElement('img');
+    close_icon.setAttribute('class', 'close_button');
+    close_icon.setAttribute('src', '../assets/images/Icon.png');
+    close_icon.setAttribute('onclick', 'closePopup()');
+    const desktop_close_icon = document.createElement('img');
+    desktop_close_icon.setAttribute('class', 'desktop_close_button');
+    desktop_close_icon.setAttribute('src', '../assets/images/desktop_close.png');
+    desktop_close_icon.setAttribute('onclick', 'closePopup()');
     const img = document.createElement('img');
     img.setAttribute('src', '../assets/images/Snapshot Portfolio.jpg');
-    img.setAttribute('width', '311px');
-    img.setAttribute('height', '220px');
+    img.setAttribute('class', 'main_img');
+    imageDiv.appendChild(close_icon);
+    imageDiv.appendChild(desktop_close_icon);
     imageDiv.appendChild(img);
     const titleSection = document.createElement('div');
     titleSection.classList.add('title-popup');
@@ -38,9 +101,55 @@ function showPopup() {
     return mainPopupDiv;
 }
 
+
+function showDynamicproject () {
+  const divDynamic = projectInfo.map((item) => {
+    const mainCard = document.createElement('div');
+    mainCard.classList.add('card');
+    const cardImage = document.createElement('div');
+    cardImage.classList.add('card-image')
+    const cardContent = document.createElement('div');
+    cardContent.classList.add('card-content');
+    mainCard.appendChild(cardImage);
+    mainCard.appendChild(cardContent);
+    const heading = document.createElement('h3');
+    heading.innerText = `${item.projectName}`;
+    const Tags = document.createElement('div');
+    Tags.classList.add('tags');
+    cardContent.appendChild(heading);
+    cardContent.appendChild(Tags);
+    const spanTag = document.createElement('span');
+    spanTag.classList.add('tag');
+    spanTag.innerText= 'JavaScript';
+    const popupButton = document.createElement('button');
+    popupButton.setAttribute('class', 'btn');
+    popupButton.setAttribute('type', 'button');
+    popupButton.setAttribute('onclick', 'openPopup()')
+    popupButton.innerText = 'See Project';
+    Tags.appendChild(spanTag);
+    cardContent.appendChild(popupButton);
+  })
+  
+  return divDynamic;
+}
+
+function openPopup () {
+    const popupWindow = document.querySelector('.popup');
+    popupWindow.style.display = 'block';
+}
+
+function closePopup () {
+    const popupWindow = document.querySelector('.popup');
+    popupWindow.style.display = 'none';
+}
+
 window.addEventListener('load', ()=> {
    const popupWindowSection = document.getElementById('popWindow');
    if (popupWindowSection) {
         popupWindowSection.appendChild(showPopup());
    }
+
+  //  const dynamicCardSection = document.querySelector('.card-section');
+  //  dynamicCardSection.appendChild(showDynamicproject().join(''));
+   document.querySelector('.card-section').innerHTML = showDynamicproject().join('');
 })
