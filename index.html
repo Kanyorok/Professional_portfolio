@@ -12,19 +12,40 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
+    <script src="js/script.js"></script>
     <title>Agatha Mwaniki</title>
   </head>
 
   <body>
+    <div id="popWindow"></div>
     <div class="top-section">
       <div class="top-menu">
-        <img class="menu-bar" src="assets/images/Icon - Menu.png" alt="menu" />
+        <img
+          class="menu-bar"
+          src="assets/images/Icon - Menu.png"
+          alt="menu"
+          onclick="mobileMenu()"
+        />
+        <div class="top-x">
+          <i class="fas fa-times x-icon" onclick="mobileMenu()"></i>
+        </div>
       </div>
       <ul class="desktop-menu">
         <li>Portfolio</li>
         <li>About</li>
         <li>Contact</li>
       </ul>
+      <section id="menu-page">
+        <a href="#portfolio_section" onclick="mobileMenu()">
+          <h1 class="menu-title">Portfolio</h1>
+        </a>
+        <a href="#about_section" onclick="mobileMenu()">
+          <h1 class="menu-title">About</h1>
+        </a>
+        <a href="#contact_section" onclick="mobileMenu()">
+          <h1 class="menu-title">Contact</h1>
+        </a>
+      </section>
       <section>
         <div class="cover-image">
           <h1 class="heading-1">Hey there.<span>I’m Agatha Mwaniki.</span></h1>
@@ -36,10 +57,18 @@
             project you need coded, don’t hesitate to contact me.
           </p>
           <div class="socials">
-            <a href="https://github.com/Mwan3kii" target="_blank" rel="noopener">
+            <a
+              href="https://github.com/Mwan3kii"
+              target="_blank"
+              rel="noopener"
+            >
               <i class="fab fa-github social-icon"></i>
             </a>
-            <a href="https://www.linkedin.com/in/agatha-mwaniki/" target="_blank" rel="noopener">
+            <a
+              href="https://www.linkedin.com/in/agatha-mwaniki/"
+              target="_blank"
+              rel="noopener"
+            >
               <i class="fab fa-linkedin social-icon"></i>
             </a>
             <i class="fab fa-medium social-icon"></i>
@@ -52,51 +81,11 @@
       </section>
     </div>
 
-    <section>
+    <section id="portfolio_section">
       <h1 class="projects-title">My Recent Works</h1>
-      <div class="card-section">
-        <div class="card">
-          <div class="card-image"></div>
-          <div class="card-content">
-            <h3>Multi-Post Stories Gain+Glory</h3>
-            <div class="tags">
-              <span class="tag">Ruby on Rails</span>
-              <span class="tag">CSS</span>
-              <span class="tag">JavaScript</span>
-              <span class="tag">HTML</span>
-            </div>
-            <button class="btn" type="button">See project</button>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-image"></div>
-          <div class="card-content">
-            <h3>Multi-Post Stories Gain+Glory</h3>
-            <div class="tags">
-              <span class="tag">Ruby on Rails</span>
-              <span class="tag">CSS</span>
-              <span class="tag">JavaScript</span>
-              <span class="tag">HTML</span>
-            </div>
-            <button class="btn" type="button">See project</button>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-image"></div>
-          <div class="card-content">
-            <h3>Multi-Post Stories Gain+Glory</h3>
-            <div class="tags">
-              <span class="tag">Ruby on Rails</span>
-              <span class="tag">CSS</span>
-              <span class="tag">JavaScript</span>
-              <span class="tag">HTML</span>
-            </div>
-            <button class="btn" type="button">See project</button>
-          </div>
-        </div>
-      </div>
+      <div class="card-section"></div>
     </section>
-    <section>
+    <section id="about_section">
       <div class="about-section">
         <h2>About me</h2>
         <img
@@ -154,7 +143,7 @@
         </div>
       </div>
     </section>
-    <section>
+    <section id="contact_section">
       <div class="contact-section">
         <div class="form-container">
           <h3>
@@ -190,7 +179,11 @@
           </form>
           <p class="email">agathawanja303@gmail.com</p>
           <div class="socials">
-            <a href="https://github.com/Mwan3kii" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://github.com/Mwan3kii"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <i class="fab fa-github social-icon"></i>
             </a>
             <a href="https://www.linkedin.com/in/agatha-mwaniki/">
