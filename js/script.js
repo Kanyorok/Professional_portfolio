@@ -6,7 +6,7 @@ const projectInfo = [
       projectInfo:
         'A daily tracking of privately personalized activities; no accounts or sign-ups required.',
       tech: ['HTML', 'CSS', 'Javascript'],
-      img: 'projects/center_back.png',
+      img: '../assets/projects/center_back.png',
     },
     {
       id: 2,
@@ -14,7 +14,7 @@ const projectInfo = [
       projectInfo:
         "A daily selection of privately personalized reads; no accounts or sign-ups required. Has been the industry's standard.",
       tech: ['HTML', 'Bootstrap', 'Ruby'],
-      img: 'projects/center_back.png',
+      img: '../assets/projects/center_back.png',
     },
     {
       id: 3,
@@ -22,15 +22,15 @@ const projectInfo = [
       projectInfo:
         "A daily selection of privately personalized reads; no accounts or sign-ups required. Has been the industry's standard.",
       tech: ['HTML', 'Bootstrap', 'Ruby'],
-      img: 'projects/center_back.png',
+      img: '../assets/projects/center_back.png',
     },
     {
       id: 4,
       projectName: 'Profesional Art Printing Data',
       projectInfo:
         "A daily selection of privately personalized reads; no accounts or sign-ups required. Has been the industry's standard.",
-      tech: ['HTML', 'Bootstrap', 'Ruby'],
-      img: 'projects/center_back.png',
+      tech: ['HTML', 'Bootstrap', 'Ruby','Rails'],
+      img: '../assets/projects/center_back.png',
     },
     {
       id: 5,
@@ -38,7 +38,7 @@ const projectInfo = [
       projectInfo:
         "A daily selection of privately personalized reads; no accounts or sign-ups required. Has been the industry's standard.",
       tech: ['HTML', 'Bootstrap', 'Ruby'],
-      img: 'projects/center_back.png',
+      img: '../assets/projects/center_back.png',
     },
     {
       id: 6,
@@ -46,7 +46,7 @@ const projectInfo = [
       projectInfo:
         "A daily selection of privately personalized reads; no accounts or sign-ups required. Has been the industry's standard.",
       tech: ['HTML', 'Bootstrap', 'Ruby'],
-      img: 'projects/center_back.png',
+      img: '../assets/projects/center_back.png',
     },
   ];
 
@@ -94,6 +94,7 @@ function showPopup() {
     titleSection.classList.add('title-popup');
     const mainProjectTitle = document.createElement('h2');
     mainProjectTitle.innerText = "Keeping track of hundreds of components"
+    mainProjectTitle.classList.add('heading_section');
     titleSection.appendChild(mainProjectTitle);
     secondaryPopupDiv.appendChild(imageDiv);
     secondaryPopupDiv.appendChild(titleSection);
@@ -101,41 +102,62 @@ function showPopup() {
     return mainPopupDiv;
 }
 
-
-function showDynamicproject () {
-  const divDynamic = projectInfo.map((item) => {
+function showDynamicproject() {
+  const cardSection = document.querySelector('.card-section');
+  if (!cardSection) return;
+  projectInfo.forEach((item) => {
     const mainCard = document.createElement('div');
     mainCard.classList.add('card');
     const cardImage = document.createElement('div');
-    cardImage.classList.add('card-image')
+    cardImage.classList.add('card-image');
+    const img = document.createElement('img');
+    img.src = item.img; 
+    img.alt = item.projectName; 
+    cardImage.appendChild(img);
+    mainCard.appendChild(cardImage);
     const cardContent = document.createElement('div');
     cardContent.classList.add('card-content');
-    mainCard.appendChild(cardImage);
-    mainCard.appendChild(cardContent);
     const heading = document.createElement('h3');
-    heading.innerText = `${item.projectName}`;
-    const Tags = document.createElement('div');
-    Tags.classList.add('tags');
+    heading.innerText = item.projectName;
     cardContent.appendChild(heading);
-    cardContent.appendChild(Tags);
-    const spanTag = document.createElement('span');
-    spanTag.classList.add('tag');
-    spanTag.innerText= 'JavaScript';
+    const projectDescription = document.createElement('p');
+    projectDescription.innerText = item.projectInfo;
+    cardContent.appendChild(projectDescription);
+    const tags = document.createElement('div');
+    tags.classList.add('tags');
+    item.tech.forEach((tech) => {
+      const spanTag = document.createElement('span');
+      spanTag.classList.add('tag');
+      spanTag.innerText = tech;
+      tags.appendChild(spanTag);
+    });
+    cardContent.appendChild(tags);
     const popupButton = document.createElement('button');
     popupButton.setAttribute('class', 'btn');
     popupButton.setAttribute('type', 'button');
-    popupButton.setAttribute('onclick', 'openPopup()')
+    popupButton.setAttribute('onclick', `clickedProject(${item.id})`); // This assumes you have a function to handle popups
     popupButton.innerText = 'See Project';
-    Tags.appendChild(spanTag);
     cardContent.appendChild(popupButton);
-  })
-  
-  return divDynamic;
+    mainCard.appendChild(cardContent);
+    cardSection.appendChild(mainCard);
+  });
 }
+
 
 function openPopup () {
     const popupWindow = document.querySelector('.popup');
     popupWindow.style.display = 'block';
+}
+
+function clickedProject(projectId){
+  const heading_section = document.querySelector('.heading_section');
+
+  projectInfo.forEach((e, i) => {
+    if (projectInfo[i].id === Number(projectId)) {
+      heading_section.innerHTML = projectInfo[i].projectName;
+      openPopup();
+    }
+  })
 }
 
 function closePopup () {
@@ -143,13 +165,13 @@ function closePopup () {
     popupWindow.style.display = 'none';
 }
 
+// Add Validation to Form 
+
+
 window.addEventListener('load', ()=> {
    const popupWindowSection = document.getElementById('popWindow');
    if (popupWindowSection) {
         popupWindowSection.appendChild(showPopup());
    }
-
-  //  const dynamicCardSection = document.querySelector('.card-section');
-  //  dynamicCardSection.appendChild(showDynamicproject().join(''));
    document.querySelector('.card-section').innerHTML = showDynamicproject().join('');
 })
